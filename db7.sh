@@ -31,7 +31,7 @@ vps="blangkon";
 #if [[ $vps = "zvur" ]]; then
 	#source="http://"
 #else
-	source="https://github.com/bababa358/test"
+	source="https://raw.githubusercontent.com/bababa358/test"
 #fi
 
 # go to root
