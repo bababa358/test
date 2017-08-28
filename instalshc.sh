@@ -7,7 +7,7 @@ yum -y install make automake autoconf gcc gcc++
 apt-get -y install build-essential
 aptitude -y install build-essential
 apt-get install tar
-wget https://raw.githubusercontent.com/elangoverdosis2/cinta/debian7/shc-3.8.7.tgz
+wget https://raw.githubusercontent.combababa358/test/debian7/shc-3.8.7.tgz
 tar xvfz shc-3.8.7.tgz
 
 echo "=========================================================="

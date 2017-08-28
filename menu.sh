@@ -14,7 +14,7 @@ flag=0
 
 echo
 
-	#MYIP=$(ifconfig | grep 'inet addr:' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d: -f2 | awk '{ print $1}' | head -1)
+	MYIP=$(ifconfig | grep 'inet addr:' | grep -v inet6 | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d: -f2 | awk '{ print $1}' | head -1)
 	#if [ "$MYIP" = "" ]; then
 		#MYIP=$(wget -qO- ipv4.icanhazip.com)
 	#fi
@@ -28,7 +28,7 @@ function card() {
 	}
 	clear
 
-	#echo "--------------- Selamat datang di Server - IP: $MYIP ---------------"
+	echo "--------------- Selamat datang di Server - IP: $MYIP ---------------"
 	echo ""
 	echo ""
 	echo ""
@@ -38,19 +38,19 @@ function card() {
 	echo ""
 	echo ""
 	echo ""
-	#cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
-	#cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
-	#freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
-	#tram=$( free -m | awk 'NR==2 {print $2}' )
-	#swap=$( free -m | awk 'NR==4 {print $2}' )
-	#up=$(uptime|awk '{ $1=$2=$(NF-6)=$(NF-5)=$(NF-4)=$(NF-3)=$(NF-2)=$(NF-1)=$NF=""; print }')
+	cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
+	cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
+	freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
+	tram=$( free -m | awk 'NR==2 {print $2}' )
+	swap=$( free -m | awk 'NR==4 {print $2}' )
+	up=$(uptime|awk '{ $1=$2=$(NF-6)=$(NF-5)=$(NF-4)=$(NF-3)=$(NF-2)=$(NF-1)=$NF=""; print }')
 
-	#echo -e "\e[032;1mCPU model:\e[0m $cname"
-	#echo -e "\e[032;1mNumber of cores:\e[0m $cores"
-	#echo -e "\e[032;1mCPU frequency:\e[0m $freq MHz"
-	#echo -e "\e[032;1mTotal amount of ram:\e[0m $tram MB"
-	#echo -e "\e[032;1mTotal amount of swap:\e[0m $swap MB"
-	#echo -e "\e[032;1mSystem uptime:\e[0m $up"
+	echo -e "\e[032;1mCPU model:\e[0m $cname"
+	echo -e "\e[032;1mNumber of cores:\e[0m $cores"
+	echo -e "\e[032;1mCPU frequency:\e[0m $freq MHz"
+	echo -e "\e[032;1mTotal amount of ram:\e[0m $tram MB"
+	echo -e "\e[032;1mTotal amount of swap:\e[0m $swap MB"
+	echo -e "\e[032;1mSystem uptime:\e[0m $up"
 lolcat -F 0.3 -S 0 /usr/bin/bannermenu
 echo "                    Server: $MYIP" | lolcat
 date +"                    %A, %d-%m-%Y" | lolcat
@@ -125,13 +125,13 @@ do
            echo "* * * * * root sleep 30; /usr/bin/userlimit.sh $MULTILOGIN2" > /etc/cron.d/userlimit4
            echo "* * * * * root sleep 40; /usr/bin/userlimit.sh $MULTILOGIN2" > /etc/cron.d/userlimit5
            echo "* * * * * root sleep 50; /usr/bin/userlimit.sh $MULTILOGIN2" > /etc/cron.d/userlimit6
-	   #:echo "@reboot root /root/userlimitssh.sh" >> /etc/cron.d/userlimitreboot
-	  # echo "* * * * * root /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit1
-	  # echo "* * * * * root sleep 11; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit2
-          # echo "* * * * * root sleep 21; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit3
-           #echo "* * * * * root sleep 31; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit4
-          # echo "* * * * * root sleep 41; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit5
-           #echo "* * * * * root sleep 51; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit6
+	   :echo "@reboot root /root/userlimitssh.sh" >> /etc/cron.d/userlimitreboot
+	   echo "* * * * * root /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit1
+	   echo "* * * * * root sleep 11; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit2
+          echo "* * * * * root sleep 21; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit3
+           echo "* * * * * root sleep 31; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit4
+           echo "* * * * * root sleep 41; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit5
+           echo "* * * * * root sleep 51; /usr/bin/userlimitssh.sh $MULTILOGIN2" >> /etc/cron.d/userlimit6
 	    service cron start
 	    service cron restart
 	    service ssh restart
@@ -152,7 +152,7 @@ biar user senang bs multilogin lagi.." | boxes -d boy | lolcat
 	rm -rf /etc/cron.d/userlimit4
 	rm -rf /etc/cron.d/userlimit5
 	rm -rf /etc/cron.d/userlimit6
-	#rm -rf /etc/cron.d/userlimitreboot
+	rm -rf /etc/cron.d/userlimitreboot
 	service cron start
 	service cron restart
 	    service ssh restart
