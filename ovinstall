@@ -396,9 +396,12 @@ dev tun
 proto $PROTOCOL
 sndbuf 0
 rcvbuf 0
-remote $IP $PORT
-http-proxy-option CUSTOM-HEADER X-Online-Host sdp.vivo.com.br
-http-proxy $IP 80
+<connection>
+remote Server_JZ-VPN 9999 udp
+</connection>
+remote $IP:$PORT@lvs.truehits.in.th
+http-proxy $IP 8080
+http-proxy-retry
 resolv-retry infinite
 nobind
 persist-key
